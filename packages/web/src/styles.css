@@ -14,7 +14,9 @@
 body {
   background: var(--bg);
   color: var(--text);
-  font: 14px/1.4 ui-sans-serif, system-ui;
+  font:
+    14px/1.4 ui-sans-serif,
+    system-ui;
 }
 .app {
   display: grid;
