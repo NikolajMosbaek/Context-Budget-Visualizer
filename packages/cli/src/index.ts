@@ -1,3 +1,6 @@
+import { spawn } from 'node:child_process';
+import { dirname, join } from 'node:path';
+import { fileURLToPath } from 'node:url';
 import {
   CtxvizError,
   locateActiveSession,
@@ -7,6 +10,7 @@ import {
 } from '@windowpane/core';
 import { parseCliArgs } from './args.js';
 import { renderReport } from './report.js';
+import { startServer } from './server.js';
 
 async function main(): Promise<number> {
   let opts;
@@ -30,7 +34,20 @@ async function main(): Promise<number> {
       process.stdout.write(renderReport(snapshot));
       return 0;
     }
-    console.log('live mode lands in milestone 4 — use `ctxviz report` for now');
+
+    const webDistDir = join(dirname(fileURLToPath(import.meta.url)), '../web-dist');
+    const srv = await startServer({ port: opts.port, getSnapshot: () => snapshot, webDistDir });
+    console.log(`▸ session ${located.sessionId} · dashboard live at ${srv.url}`);
+    if (opts.open) {
+      const opener =
+        process.platform === 'darwin'
+          ? 'open'
+          : process.platform === 'win32'
+            ? 'start'
+            : 'xdg-open';
+      spawn(opener, [srv.url], { detached: true, stdio: 'ignore' }).unref();
+    }
+    await new Promise(() => {}); // hold open until Ctrl-C (M4 replaces with watcher lifecycle)
     return 0;
   } catch (e) {
     if (e instanceof CtxvizError) {
