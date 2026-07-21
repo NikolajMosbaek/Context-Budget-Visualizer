@@ -1,0 +1,72 @@
+:root {
+  --bg: #0f1115;
+  --panel: #171a21;
+  --text: #e6e6e6;
+  --dim: #9aa0aa;
+  --green: #3fb950;
+  --amber: #d29922;
+  --red: #f85149;
+}
+* {
+  box-sizing: border-box;
+  margin: 0;
+}
+body {
+  background: var(--bg);
+  color: var(--text);
+  font: 14px/1.4 ui-sans-serif, system-ui;
+}
+.app {
+  display: grid;
+  grid-template-rows: auto 1fr 160px;
+  height: 100vh;
+  gap: 8px;
+  padding: 12px;
+}
+main {
+  display: grid;
+  grid-template-columns: 1fr 300px;
+  gap: 8px;
+  min-height: 0;
+}
+aside,
+footer,
+header {
+  background: var(--panel);
+  border-radius: 8px;
+  padding: 10px;
+}
+.empty {
+  display: grid;
+  place-items: center;
+  height: 100vh;
+  color: var(--dim);
+}
+.treemap {
+  position: relative;
+  overflow: hidden;
+  height: 100%;
+  background: var(--panel);
+  border-radius: 8px;
+}
+.node {
+  position: absolute;
+  overflow: hidden;
+  border-radius: 3px;
+  cursor: pointer;
+  transition:
+    transform 0.4s ease,
+    width 0.4s ease,
+    height 0.4s ease,
+    opacity 0.3s ease;
+}
+.node.enter {
+  opacity: 0;
+}
+.node .label {
+  padding: 2px 6px;
+  font-size: 11px;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
