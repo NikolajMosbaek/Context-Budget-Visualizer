@@ -1,6 +1,19 @@
 {
   "name": "ctxviz",
   "version": "0.1.0",
+  "description": "See what's eating your Claude Code context window — live.",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/NikolajMosbaek/Context-Budget-Visualizer.git"
+  },
+  "keywords": [
+    "claude",
+    "claude-code",
+    "context-window",
+    "tokens",
+    "visualizer"
+  ],
   "type": "module",
   "engines": {
     "node": ">=20"
