@@ -56,8 +56,17 @@ Live updates: chokidar/fs.watch tail → WebSocket/SSE push → animated treemap
 
 ## Build & Test
 
-To be established in Milestone 0. Root scripts will be `pnpm build`, `pnpm test`, `pnpm lint`,
-`pnpm dev` (CLI against a fixture). Update this section with real commands as soon as they exist.
+Root scripts (run from the repo root; requires Node ≥20 + pnpm via corepack):
+
+- `pnpm install` — install the workspace (esbuild's build script is allow-listed in
+  `pnpm-workspace.yaml`; run `pnpm rebuild esbuild` if tsup/vite ever error on a missing binary)
+- `pnpm build` — tsup-builds `core` then `cli`, then Vite-builds `web` into `packages/cli/web-dist/`
+- `pnpm test` — builds `core`+`cli` (so the CLI integration test runs against a fresh bundle),
+  then `vitest run` across all packages
+- `pnpm lint` — `eslint .` + `prettier --check .` (Prettier owns code/config; markdown docs,
+  the lockfile, and fixtures are in `.prettierignore`). `pnpm format` rewrites in place.
+- Focused runs: `pnpm exec vitest run packages/core/test/<file>.test.ts`
+- Try the CLI: `node packages/cli/dist/index.js report --session packages/core/test/fixtures/basic.jsonl`
 
 ## Don't
 
