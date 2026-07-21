@@ -1,0 +1,2 @@
+{"type":"last-prompt","leafUuid":"u1","sessionId":"fixture-no-usage"}
+{"type":"user","uuid":"u1","parentUuid":null,"sessionId":"fixture-no-usage","timestamp":"2026-07-21T10:00:00Z","version":"2.1.216","isSidechain":false,"message":{"role":"user","content":"Hello, are you there?"}}

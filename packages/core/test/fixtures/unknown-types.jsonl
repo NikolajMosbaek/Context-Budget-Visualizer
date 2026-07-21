@@ -1,0 +1,6 @@
+{"type":"bridge-session","bridgeSessionId":"bs1","lastSequenceNum":4,"sessionId":"fixture-unknown"}
+{"type":"flux-capacitor","payload":"a record type from a future Claude Code version that the parser has never seen before","sessionId":"fixture-unknown"}
+this line is not valid json at all {{{
+{"type":"user","uuid":"u1","parentUuid":null,"sessionId":"fixture-unknown","timestamp":"2026-07-21T12:00:00Z","version":"2.1.216","isSidechain":false,"isMeta":true,"message":{"role":"user","content":"<system-reminder>Injected reminder text that belongs in the injected-context bucket.</system-reminder>"}}
+{"type":"user","uuid":"u2","parentUuid":"u1","sessionId":"fixture-unknown","timestamp":"2026-07-21T12:00:01Z","version":"2.1.216","isSidechain":false,"message":{"role":"user","content":"A real user question."}}
+{"type":"assistant","uuid":"a1","parentUuid":"u2","requestId":"req_301","sessionId":"fixture-unknown","timestamp":"2026-07-21T12:00:05Z","version":"2.1.216","isSidechain":false,"message":{"role":"assistant","model":"experimental-model-x","content":[{"type":"text","text":"An answer."},{"type":"hologram","data":"unknown block type inside a known record"}],"usage":{"input_tokens":60,"cache_creation_input_tokens":400,"cache_read_input_tokens":2000,"output_tokens":30}}}
