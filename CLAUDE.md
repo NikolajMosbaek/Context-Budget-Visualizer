@@ -9,10 +9,22 @@ and renders a live treemap + timeline + prune panel in the browser. CLI command:
 `usage` total — is specified in [`docs/architecture.md`](docs/architecture.md). Read it
 before touching engine code. Keep it in sync when the model changes.**
 
+## Doc map (read in this order before implementing)
+
+| Doc | Authority over |
+|---|---|
+| [`docs/contracts.md`](docs/contracts.md) | **All type/function signatures — wins over every other doc on conflict** |
+| [`docs/transcript-schema.md`](docs/transcript-schema.md) | Observed JSONL reality (v2.1.x): record types, usage shape, requestId turn grouping, compaction markers, subagent file layout |
+| [`docs/decisions.md`](docs/decisions.md) | Every technical choice (D1–D26) — don't re-litigate; change the doc first |
+| [`docs/algorithms.md`](docs/algorithms.md) | Tail-parse state machine, treemap animation, prune ranking |
+| [`docs/plans/`](docs/plans/README.md) | Executable milestone plans M0–M5 with full code and tests |
+| [`packages/core/test/fixtures/README.md`](packages/core/test/fixtures/README.md) | The assertions M1 tests must encode |
+
 ## Status
 
-Pre-scaffold: only README and docs exist. No code, no build system yet. First code task is
-Milestone 0 below.
+**Preparation complete — ready to execute.** All heavy design decisions are frozen in the docs
+above; fixtures exist. Next action: execute `docs/plans/milestone-0-tooling.md`, then M1–M5 in
+order (each plan ends demoable; don't start a milestone until the previous acceptance passes).
 
 ## Planned architecture
 
@@ -65,6 +77,11 @@ To be established in Milestone 0. Root scripts will be `pnpm build`, `pnpm test`
 - **Don't** crash on unknown record `type`s — count their raw size into an "unknown" bucket
 - **Don't** fold subagent sidechains (`isSidechain: true`) into the main-window breakdown —
   they occupy their own context; show them separately
+- **Don't** read a real session transcript into context with Read/cat — transcripts are
+  megabytes and will flood the window. Sample with `jq -R 'fromjson? | …' | head` /
+  `uniq -c` aggregations only; develop against the fixtures
+- **Don't** change a signature from `docs/contracts.md` in code without updating the doc in
+  the same commit — the contracts doc is the source of truth tests are written against
 - **Don't** force-push to origin — a normal `git push` is fine; never `--force`/`-f`
 
 ## Workflow
