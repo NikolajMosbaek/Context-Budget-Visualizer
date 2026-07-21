@@ -1,0 +1,26 @@
+{
+  "name": "ctxviz",
+  "version": "0.1.0",
+  "type": "module",
+  "engines": {
+    "node": ">=20"
+  },
+  "bin": {
+    "ctxviz": "./dist/index.js"
+  },
+  "files": [
+    "dist",
+    "web-dist"
+  ],
+  "scripts": {
+    "build": "tsup",
+    "dev": "node --enable-source-maps dist/index.js"
+  },
+  "dependencies": {
+    "chokidar": "^4.0.0",
+    "js-tiktoken": "^1.0.12"
+  },
+  "devDependencies": {
+    "@windowpane/core": "workspace:*"
+  }
+}

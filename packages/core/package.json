@@ -1,0 +1,17 @@
+{
+  "name": "@windowpane/core",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": ">=20"
+  },
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "scripts": {
+    "build": "tsup"
+  },
+  "dependencies": {
+    "js-tiktoken": "^1.0.12"
+  }
+}
