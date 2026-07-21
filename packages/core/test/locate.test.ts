@@ -2,11 +2,7 @@ import { mkdirSync, mkdtempSync, rmSync, utimesSync, writeFileSync } from 'node:
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';
 import { afterAll, expect, test } from 'vitest';
-import {
-  encodeProjectPath,
-  locateActiveSession,
-  locateSession,
-} from '../src/transcript/locate.js';
+import { encodeProjectPath, locateActiveSession, locateSession } from '../src/transcript/locate.js';
 import { CtxvizError } from '../src/errors.js';
 
 const home = mkdtempSync(join(tmpdir(), 'ctxviz-'));

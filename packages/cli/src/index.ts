@@ -1,3 +1,7 @@
-import { CORE_VERSION } from '@windowpane/core';
+import { locateActiveSession, parseFile, snapshotFromRecords } from '@windowpane/core';
 
-console.log(`ctxviz skeleton (core ${CORE_VERSION})`);
+// Placeholder entry — Milestone 2 replaces this with the `report`/`serve` command surface.
+void locateActiveSession;
+void parseFile;
+void snapshotFromRecords;
+console.log('ctxviz: CLI commands land in Milestone 2');

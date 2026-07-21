@@ -27,9 +27,8 @@ describe('parseLine', () => {
     expect(parseLine('{"type":"bridge-session","bridgeSessionId":"b"}').kind).toBe('meta');
     expect(parseLine('{"type":"mode","mode":"default"}').kind).toBe('meta');
     expect(
-      parseLine(
-        '{"type":"system","subtype":"compact_boundary","content":"Conversation compacted"}',
-      ).kind,
+      parseLine('{"type":"system","subtype":"compact_boundary","content":"Conversation compacted"}')
+        .kind,
     ).toBe('compact-boundary');
     expect(parseLine('{"type":"system","subtype":"other"}').kind).toBe('meta');
   });

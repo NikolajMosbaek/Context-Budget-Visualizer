@@ -80,7 +80,11 @@ export function snapshotFromRecords(
     if (Array.isArray(r.content)) {
       for (const b of r.content) {
         if (b.type === 'tool_use' && b.id && b.name) {
-          toolUseInfo.set(b.id, { name: b.name, input: b.input, turnIndex: turnByRid.get(rid)!.index });
+          toolUseInfo.set(b.id, {
+            name: b.name,
+            input: b.input,
+            turnIndex: turnByRid.get(rid)!.index,
+          });
         }
       }
     }

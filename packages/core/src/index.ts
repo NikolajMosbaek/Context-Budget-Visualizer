@@ -1,3 +1,10 @@
 export * from './types.js';
 export * from './errors.js';
+export { snapshotFromRecords } from './attribute.js';
+export { computePrune } from './prune.js';
+export { estimateBlock, estimateTokens, IMAGE_TOKENS } from './tokens.js';
+export { windowLimitFor } from './models.js';
+export { parseFile, parseLine } from './transcript/parse.js';
+export { encodeProjectPath, locateActiveSession, locateSession } from './transcript/locate.js';
+export type { LocatedSession } from './transcript/locate.js';
 export type { ParsedRecord, RawContentBlock, RawUsage } from './transcript/schema.js';
