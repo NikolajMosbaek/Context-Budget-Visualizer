@@ -1,0 +1,6 @@
+node_modules/
+dist/
+web-dist/
+pnpm-lock.yaml
+**/*.md
+**/test/fixtures/**
