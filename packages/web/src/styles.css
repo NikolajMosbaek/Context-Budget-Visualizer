@@ -44,6 +44,24 @@ header {
   height: 100vh;
   color: var(--dim);
 }
+header.danger {
+  outline: 2px solid var(--red);
+  animation: pulse 2s infinite;
+}
+@keyframes pulse {
+  50% {
+    outline-color: transparent;
+  }
+}
+.chip {
+  display: inline-block;
+  margin-left: 8px;
+  padding: 1px 8px;
+  border-radius: 10px;
+  background: #2a2e37;
+  color: var(--dim);
+  font-size: 11px;
+}
 .treemap {
   position: relative;
   overflow: hidden;

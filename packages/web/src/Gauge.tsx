@@ -22,6 +22,9 @@ export function Gauge({ snapshot: s }: { snapshot: SessionSnapshot }) {
       <strong>{fmtK(s.totalTokens)}</strong>
       {s.windowLimit && <span> / {fmtK(s.windowLimit)} tokens</span>}
       {pct !== null && <span style={{ color }}> {Math.round(pct * 100)}%</span>}
+      {s.windowLimit === null && (
+        <span className="chip"> window limit unknown — showing absolute tokens</span>
+      )}
       {pct !== null && (
         <div style={{ background: '#2a2e37', height: 6, borderRadius: 3, marginTop: 6 }}>
           <div

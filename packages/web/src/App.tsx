@@ -11,9 +11,10 @@ export function App() {
   if (!snap) return <div className="empty">connecting…</div>;
   if (snap.isEmpty)
     return <div className="empty">Session {snap.sessionId}: no assistant turns yet.</div>;
+  const danger = snap.windowLimit ? snap.totalTokens / snap.windowLimit > 0.85 : false;
   return (
     <div className="app">
-      <header>
+      <header className={danger ? 'danger' : undefined}>
         <Gauge snapshot={snap} />
       </header>
       <main>
