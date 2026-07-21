@@ -19,18 +19,24 @@ refreshing in real time as your session runs.**
 </div>
 
 ```
-$ ctxviz
-▸ watching session 3cf477c3 · dashboard live at http://localhost:4317
+$ ctxviz report
+┌─ Context: 513K / 1M tokens ── 51% ─┐
+│ ████████ System & tool definitions   180K  35%
+│ ██████   File reads                    98K  19%
+│ ███      Command output                61K  12%
+│ ███      MCP: ado                      54K  11%
+│ ██       Thinking                      39K   8%
+│          Everything else               81K  16%
+└──────────────────────────────────────────────────┘
+top reclaimable:  Bash output (turn 12) 57K · report.md read ×4 32K
+cache efficiency: 87% of window served from cache
+```
 
-┌─ Context: 513K / 1M tokens ───────────── 51% ─┐
-│ ████████ Tool results   241K  47%             │
-│ ██████   File reads       98K  19%            │
-│ ████     MCP: ado         61K  12%            │
-│ ███      System + tools   44K   9%            │
-│ ██       Thinking         39K   8%            │
-│ █        Everything else  30K   6%            │
-└───────────────────────────────────────────────┘
-top reclaimable:  Bash output (turn 12) 57K · report.md read ×4 32K · stale diff 18K
+`ctxviz` (no subcommand) tails the active session and opens the live dashboard:
+
+```
+$ ctxviz
+▸ watching session 3cf477c3 · dashboard live at http://127.0.0.1:4317
 ```
 
 <div align="center">
@@ -72,10 +78,12 @@ npm i -g ctxviz && ctxviz
 ## Usage
 
 ```bash
-ctxviz                     # live-tail the active session for the current project, open dashboard
-ctxviz report             # one-shot terminal breakdown (no browser)
-ctxviz --session <id|path> # analyze a specific / finished session
+ctxviz                      # live-tail the active session for the current project, open dashboard
+ctxviz report              # one-shot terminal breakdown (no browser)
+ctxviz --session <id|path>  # analyze a specific / finished session (works with report too)
+ctxviz --project <path>     # resolve the active session for another project dir (default: cwd)
 ctxviz --port 4317 --no-open
+ctxviz --limit <tokens>     # override the window limit (e.g. unknown model)
 ```
 
 ## How it works
