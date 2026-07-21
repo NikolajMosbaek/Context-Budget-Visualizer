@@ -27,7 +27,8 @@
   ],
   "scripts": {
     "build": "tsup",
-    "dev": "node --enable-source-maps dist/index.js"
+    "dev": "node --enable-source-maps dist/index.js",
+    "prepublishOnly": "cp ../../README.md . && cp ../../LICENSE ."
   },
   "dependencies": {
     "chokidar": "^4.0.0",

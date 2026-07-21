@@ -3,3 +3,7 @@ dist/
 web-dist/
 *.tsbuildinfo
 .DS_Store
+
+# transient copies made by ctxviz prepublishOnly (source of truth is repo root)
+packages/cli/README.md
+packages/cli/LICENSE
